@@ -1,0 +1,92 @@
+%! Author = koki
+%! Date = 29.03.22
+
+% Preamble
+\documentclass[
+    a4paper,
+    11pt
+]{article}
+
+% encoding, font, language
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[ngerman, english]{babel}
+
+\usepackage{nicefrac}
+
+\usepackage[
+    nowarnings,
+    %myconfig
+]
+{./xcookybooky}
+
+\usepackage{blindtext}    % only needed for generating test text
+
+\DeclareRobustCommand{\textcelcius}{\ensuremath{^{\circ}\mathrm{C}}}
+
+
+\setcounter{secnumdepth}{1}
+\renewcommand*{\recipesection}[2][]
+{%
+    \subsection[#1]{#2}
+}
+\renewcommand{\subsectionmark}[1]
+{% no implementation to display the section name instead
+}
+
+
+\usepackage{hyperref}    % must be the last package
+\hypersetup{%
+    pdfauthor            = {Florentina Walser, Nico Roos},
+    pdftitle             = {Flocos Rezepte},
+    pdfsubject           = {Rezepte},
+    pdfkeywords          = {rezepte, floco, vegan, homemade},
+    pdfstartview         = {FitV},
+    pdfview              = {FitH},
+    pdfpagemode          = {UseNone}, % Options; UseNone, UseOutlines
+    bookmarksopen        = {true},
+    pdfpagetransition    = {Glitter},
+    colorlinks           = {true},
+    linkcolor            = {black},
+    urlcolor             = {blue},
+    citecolor            = {black},
+    filecolor            = {black},
+}
+
+% NEW
+\renewcommand{\step}
+{%
+    \stepcounter{step}%shouldn't be in the argument of lettrine
+    \lettrine
+    [%
+        lines=2,
+        lhang=0,          % space into margin, value between 0 and 1
+        loversize=0.15,   % enlarges the height of the capital
+        slope=0em,
+        findent=1em,      % gap between capital and intended text
+        nindent=0em       % shifts all intended lines, begining with the second line
+    ]{\thestep}{}%
+}
+
+% Document
+\begin{document}
+
+    \title{Flocos Rezepte}
+    \author{Florentina Walser und Nico Roos}
+    \maketitle
+
+%    \begin{abstract}
+%        \noindent The examples in this document require at least version~1.4 of the \texttt{xcookybooky}\footnote{\url{http://www.ctan.org/pkg/xcookybooky}} package. For more examples and test recipes especially for using hook functions take a look at the source files located at \url{https://code.google.com/p/xcookybooky/}. If you are interested in modifying the layout of \texttt{xcookybooky} you will find examples in the documentation as well as in the configuration file \textbf{xcookybooky.cfg}.
+%    \end{abstract}
+
+    \tableofcontents
+
+    \vspace{5em}
+
+    \section{Rezepte}
+    \blindtext
+
+    \include{example}
+
+\end{document}
